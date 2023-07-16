@@ -1,8 +1,6 @@
 # Deep_Learning_NLP
 
-This repository was used to record and review the NLP python code.
-
-All the code came from a book and I also added some comments. This book was "Advanced Deep Learning: Natural language processing" in English, written by a Japanese - Koki Saitoh. 
+This repository was used to record and review the NLP python code. All the code came from a book and I also added some comments. This book was "Advanced Deep Learning: Natural language processing" in English, written by a Japanese - Koki Saitoh. 
 
 **His Twitter: 斎藤康毅 (@SaitohKoki)**
 
