@@ -6,12 +6,9 @@ All the code came from a book and I also added some comments. This book was "Adv
 
 **His Twitter: 斎藤康毅 (@SaitohKoki)**
 
-This was much more difficult, harder and complexer than the former one, which was named as "Introduction to Deep learning: Python-based theory and implementation".
+This book was more difficult, complex and harder than its former one, which was named "Introduction to Deep learning: Python based theory and implementation". However, I will try my best to read and understand the code or structure of NLP. By the way, I also did the note in my GitHub for the book "Introduction to Deep learning: Python based theory and implementation".
 
-However, I will try my best to read and understand the code or structure of NLP.
-
-Note: The code in this repository could be shared but not for commercial use.
-
+**Note: The code in this repository could be shared but not for commercial use.**
 
 The code in files named "book_given_function.py" was copied and paste from the book. BUT the rest of code was totally understood and could be explained clearly by myself.
 
