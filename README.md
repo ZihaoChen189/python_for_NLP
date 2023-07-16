@@ -8,6 +8,6 @@ This was much more difficult, harder and complexer than the former one, which wa
 
 Note: The code in this repository could be shared but not for commercial use.
 
-The file's name was just copyed and pasted, which would be named something like "book_given_function.py". The rest of code was totally understood and could be explained clearly by myself.
+The code in the file named "book_given_fucntion.py" was directly copied and paste from the book. But the rest of code was totally understood and could be explained clearly by myself.
 
-Always remember: Practice makes perfect.
+# Always remember: Practice makes perfect.
