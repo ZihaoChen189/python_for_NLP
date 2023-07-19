@@ -197,4 +197,3 @@ class TwoLayerNet:
         for layer in reversed(self.layers):
             dout = layer.backward(dout)  # the grads were updated one by one
         return dout
-
