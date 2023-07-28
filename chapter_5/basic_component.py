@@ -20,7 +20,7 @@ class RNN:
         t = np.dot(h_prev, Wh) + np.dot(x, Wx) + b
         h_next = np.tanh(t)
         
-        self.cache = (x, h_prev, h_next)
+        self.cache = (x, h_prev, h_next)  # ready for the backward() operation
         return h_next
     
     def backward(self, dh_next):
@@ -28,11 +28,13 @@ class RNN:
         x, h_prev, h_next = self.cache
         
         dt = dh_next * (1 - h_next**2)  # deivation of the tanh(x)
-        db = np.sum(dt, axis=0)  # backward for the repeat node
-        
+
+        db = np.sum(dt, axis=0)  # backward for the repeat node (gradient of the bias)
+        # the first MatMul node
         dWh = np.dot(h_prev.T, dt)
         dh_prev = np.dot(dt, Wh.T)
         
+        # the second MatMul node
         dWx = np.dot(x.T, dt)
         dx = np.dot(dt, Wx.T)
         
@@ -60,6 +62,8 @@ class TimeRNN:
     def reset_state(self):
         self.h = None
         
+    # warning: this is not the forward betwen layers
+    # is is the forward for STEPS of the input data
     def forward(self, xs):
         Wx, Wh, b = self.params
         N, T, D = xs.shape
@@ -86,6 +90,7 @@ class TimeRNN:
         
         # ready for the output
         dxs = np.empty((N, T, D), dtype='f')
+
         dh = 0  # useless for now, helpful to seq2seq
         grads = [0, 0, 0]  # Wx, Wh, b
         
@@ -96,7 +101,7 @@ class TimeRNN:
             dxs[:, t, :] = dx  # update the output
             
             for i, grad in enumerate(layer.grads):
-                grads[i] += grad  # consider every word! not just one, accumulating them
+                grads[i] += grad  # accumulate the argument of 3 places one by one in the Truncated BPTT operation
             
         for i, grad in enumerate(layer.grads):
             self.grads[i][...] = grad  # OK, update THREE gradient values
@@ -128,7 +133,7 @@ class SimpleRnnLM:
         self.params, self.grads = [], []
         for layer in self.layers:
             self.params += layer.params
-            self.params += layer.grads
+            self.grads += layer.grads
             
     def forward(self, xs, ts):
         for layer in self.layers:
@@ -144,6 +149,4 @@ class SimpleRnnLM:
     
     def reset_state(self):
         self.rnn_layer.reset_state()
-        
-        
         
